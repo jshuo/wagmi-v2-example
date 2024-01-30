@@ -8,7 +8,7 @@ import { reconnect } from "@wagmi/core";
 
 import { config } from "@/wagmi";
 
-export function Providers(props: { children: ReactNode }) {
+export default function Providers(props: { children: ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
   useEffect(() => {
     setTimeout(() => {
