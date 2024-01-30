@@ -10,25 +10,28 @@ type resData = {
   }[][];
 };
 
+let base = 0;
+
 export function ReadContractsInfinite() {
   const { data, isLoading, isSuccess, fetchNextPage } =
     useInfiniteReadContracts({
       cacheKey: "lootTokenURIs",
       contracts(pageParam: number) {
-        return [
-          // ...
-          {
+        const arr = [];
+        for (let i = base; i < pageParam; i++) {
+          arr.push({
             ...wagmiContractConfig,
             functionName: "ownerOf",
-            args: [BigInt(pageParam)] as const,
-          },
-          // ...
-        ];
+            args: [BigInt(i)] as const,
+          });
+        }
+        base = pageParam;
+        return arr;
       },
       query: {
-        initialPageParam: 0,
+        initialPageParam: base,
         getNextPageParam: (_lastPage, _allPages, lastPageParam) => {
-          return lastPageParam + 1;
+          return lastPageParam + 10;
         },
       },
     });

@@ -37,7 +37,7 @@ function Page() {
           <Account />
           <br />
           <hr />
-          {/* <h2>Balance</h2>
+          <h2>Balance</h2>
           <Balance />
           <br />
           <hr />
@@ -50,7 +50,7 @@ function Page() {
           <br />
           <hr />
           <h2>Read Contracts</h2>
-          <ReadContracts /> */}
+          <ReadContracts />
           <br />
           <hr />
           <h2>Read Contracts Infinite</h2>
