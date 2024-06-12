@@ -1,5 +1,5 @@
 import { http, createConfig } from "wagmi";
-import { mainnet, sepolia } from "wagmi/chains";
+import { hardhat, polygonAmoy, mainnet, sepolia } from "wagmi/chains";
 import { coinbaseWallet, injected, walletConnect } from "wagmi/connectors";
 import getConfig from "next/config";
 
@@ -17,12 +17,14 @@ const connectors =
     : [];
 
 export const config = createConfig({
-  chains: [mainnet, sepolia],
+  chains: [hardhat, polygonAmoy, mainnet,sepolia],
   connectors,
   ssr: true,
   transports: {
-    [mainnet.id]: http(),
+    [hardhat.id]: http(),
     [sepolia.id]: http(),
+    [polygonAmoy.id]: http(),
+    [mainnet.id]: http(),
   },
 });
 
